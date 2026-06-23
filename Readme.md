@@ -4,17 +4,14 @@ GitHub仓库里的中文Markdown文档提交后，自动生成英文和日文文
 
 ## 用户流程
 
-```puml
-@startuml 用户流程
-skinparam actorStyle awesome
-actor 用户
-autonumber "<b>."
-用户->Github:Push
-Github->后端服务:GithubAction\n携带整体Json文件
-后端服务->讯飞API:自脚本执行，携带值
-后端服务<-讯飞API:翻译携带值
-后端服务->后端服务:处理翻译结果，生成Json文件
-后端服务->Github:提交Json文件
-Github->用户:发送消息“自动化流程完成”
-@enduml
+```mermaid
+sequenceDiagram
+    actor 用户
+    用户->>GitHub: Push
+    GitHub->>后端服务:Action
+    后端服务->>讯飞API:携带中文Json值
+    讯飞API->>后端服务:携带翻译后的Json值
+    后端服务->>后端服务:组装Json
+    后端服务->>GitHub:push翻译后的Json文件
+    GitHub->>用户:回报消息
 ```
