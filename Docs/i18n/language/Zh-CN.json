@@ -1,0 +1,112 @@
+{
+    "zh-CN": {
+        "meta": {
+            "title": "チハの雪 的作品集"
+        },
+        "header": {
+            "brand": "Portfolio",
+            "lang": {
+                "ja": "JA",
+                "en": "EN",
+                "zh-CN": "ZH"
+            }
+        },
+        "hero": {
+            "title": {
+                "line1": "用系统设计与技术解决业务问题"
+            },
+            "badge": "关于我",
+            "name": "チハの雪",
+            "role": "Web工程师（设计 / 开发 / 运维）",
+            "about": {
+                "line1": "我是一名 Web 工程师，基于企业业务系统的运维与改进经验，在受限环境下也能够根据业务需求进行系统设计与实现。",
+                "line2": "我负责设计判断，同时在实现与改进过程中积极利用 AI 工具，以提升开发效率，并注重系统的可维护性与可复现性。"
+            },
+            "cta": {
+                "contact": "联系我 💌",
+                "github": "GitHub ✦"
+            }
+        },
+        "skills": {
+            "title": "技能",
+            "frontend": {
+                "title": "前端开发",
+                "desc": "主要使用 Vue 和 TypeScript 进行 UI 实现，注重代码的可读性与可维护性。",
+                "tag": {
+                    "vue": "Vue",
+                    "ts": "TypeScript",
+                    "htmlCss": "HTML / SCSS"
+                }
+            },
+            "backend": {
+                "title": "服务端 / 业务逻辑",
+                "desc": "通过业务系统的开发与维护经验，在理解既有代码基础上安全地进行改进与优化。",
+                "tag": {
+                    "java": "Java",
+                    "jsp": "JSP",
+                    "sql": "SQL",
+                    "springBoot": "Spring Boot"
+                }
+            },
+            "tools": {
+                "title": "开发工具与流程",
+                "desc": "基于 Git 的版本管理流程，并结合 AI 工具提升实现与重构效率。",
+                "tag": {
+                    "github": "GitHub",
+                    "cursor": "Cursor",
+                    "codex": "Codex",
+                    "stitch": "Google Stitch"
+                }
+            }
+        },
+        "experience": {
+            "title": "经历",
+            "work": {
+                "role": "制造业企业 / 内部 Web 工程师",
+                "status": "在职",
+                "item1": "・负责公司内部业务 Web 系统的运维、维护与功能改进",
+                "item2": "・参与 JSP / Java 既有系统的修改与 Bug 修复",
+                "item3": "・与业务部门沟通需求，从设计辅助到开发与发布全流程参与",
+                "item4": "・逐步改善前端结构，提高代码可读性与系统可维护性"
+            },
+            "self": {
+                "title": "自主学习 / 自我提升",
+                "date": "2023 - 至今",
+                "item1": "・大学期间参与半年远程开发项目，并通过毕业设计积累自主学习与实现经验。",
+                "item2": "・日语完全自学，并通过日本语能力试验 N1。"
+            },
+            "edu": {
+                "title": "Education / 学历",
+                "date": "2020 - 2024",
+                "item1": "・信息工程相关专业",
+                "item2": "・学习了程序设计基础、数据结构与算法、操作系统、数据库、软件工程等课程。",
+                "item3": "・基于计算机科学基础知识，在理解既有系统设计背景的基础上进行系统改进。"
+            }
+        },
+        "projects": {
+            "title": "项目",
+            "featured": {
+                "badge": "重点项目"
+            },
+            "p1": {
+                "name": "开发中的网站 1",
+                "desc": "待定",
+                "link": "查看项目 ✨"
+            },
+            "p2": {
+                "name": "开发中的网站 2",
+                "desc": "待定",
+                "link": "查看项目 ✨"
+            },
+            "p3": {
+                "name": "开发中的网站 3",
+                "desc": "待定",
+                "link": "查看项目 ✨"
+            }
+        },
+        "footer": {
+            "tagline": "思考后创造，并让它持续被使用"
+        },
+        "__lang": "zh-CN"
+    }
+}
