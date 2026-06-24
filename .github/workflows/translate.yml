@@ -15,5 +15,15 @@ jobs:
 
       - name: Hello
         run: |
-          echo "Hello World"
+          echo "ls -la"
           ls -la
+          echo "pwd"
+          pwd
+          echo "whoami"
+          whoami
+          echo "hostname"
+          hostname
+          echo "date"
+          date
+          echo "env"
+          env
