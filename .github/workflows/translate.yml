@@ -26,6 +26,8 @@ jobs:
 
       - name: git命令
         run: |
+          git config --global user.email "12123@qq.com"
+          git config --global user.name "我是Action"
           git status
           git add .
           git status
