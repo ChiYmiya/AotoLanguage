@@ -12,27 +12,37 @@ jobs:
   create_file:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    # steps:
+    #   - name: Checkout
+    #     uses: actions/checkout@v4
 
-      - name: 创建目录
-        run: |
-          pwd
-          mkdir testfile
+    #   - name: 创建目录
+    #     run: |
+    #       pwd
+    #       mkdir testfile
 
-      - name: 创建文件，写
-        run: |
-          echo "这是一段文本" > testfile/test.txt
-          ls testfile
-          cat testfile/test.txt
+    #   - name: 创建文件，写
+    #     run: |
+    #       echo "这是一段文本" > testfile/test.txt
+    #       ls testfile
+    #       cat testfile/test.txt
 
-      - name: git命令
-        run: |
-          git config --global user.email "12123@qq.com"
-          git config --global user.name "我是Action"
-          git status
-          git add .
-          git status
-          git commit -m "这是第一次Action运行"
-          git push
+    #   - name: git命令
+    #     run: |
+    #       git config --global user.email "12123@qq.com"
+    #       git config --global user.name "我是Action"
+    #       git status
+    #       git add .
+    #       git status
+    #       git commit -m "这是第一次Action运行"
+    #       git push
+      steps:
+        - name: 测试是否通过Secret变量输出
+        - run: |
+            if [-z "$GEMINI_API_KEY"];then
+                echo "$GEMINI_API_KEY的长度为0"
+            else
+                echo "长度非0"
+            fi
+        env:
+          GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
