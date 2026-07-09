@@ -9,18 +9,26 @@ permissions:
   contents: write
 
 jobs:
-  create_file:
+  envOutPut:
     runs-on: ubuntu-latest
     steps:
       - name: 测试是否通过Secret变量输出
         run: |
-          if [-z "$GEMINI_API_KEY"];then
+          if [ -z "$GEMINI_API_KEY"];then
               echo "$GEMINI_API_KEY的长度为0"
           else
               echo "长度非0"
           fi
         env:
           GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
+      - name: 安装node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 输出node版本
+        run: |
+          node -v
+          npm -v
 
     # steps:
     #   - name: Checkout
