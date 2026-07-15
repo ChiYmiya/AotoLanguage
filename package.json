@@ -1,0 +1,32 @@
+{
+  "name": "aotolanguage",
+  "version": "1.0.0",
+  "description": "GitHub仓库里的中文Markdown文档提交后，自动生成英文和日文文档。",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiYmiya/AotoLanguage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ChiYmiya/AotoLanguage/issues"
+  },
+  "homepage": "https://github.com/ChiYmiya/AotoLanguage#readme",
+  "dependencies": {
+    "@google/genai": "^2.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}
