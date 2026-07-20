@@ -12,16 +12,6 @@ jobs:
   envOutPut:
     runs-on: ubuntu-latest
     steps:
-      - name: 测试通过Secrets输出的GEMINI_API_KEY的长度
-        run: |
-          if [ -z "$GEMINI_API_KEY"];then
-              echo "$GEMINI_API_KEY的长度为0"
-          else
-              echo "长度非0"
-          fi
-        env:
-          GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
-
       - name: 安装node.js
         uses: actions/setup-node@v4
         with:
@@ -41,9 +31,23 @@ jobs:
       - name: 安装依赖
         run: |
           npm install
+      - name: 测试通过Secrets输出的GEMINI_API_KEY的长度
+        run: |
+          if [ -z "$GEMINI_API_KEY"];then
+              echo "$GEMINI_API_KEY的长度为0"
+          else
+              echo "长度非0"
+          fi
+        env:
+          GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
 
       - name: 运行翻译脚本
         run: |
+          if [ -z "$GEMINI_API_KEY"];then
+              echo "$GEMINI_API_KEY的长度为0"
+          else
+              echo "长度非0"
+          fi
           npx tsx scripts/translate.ts
 
       - name: git 配置和提交
