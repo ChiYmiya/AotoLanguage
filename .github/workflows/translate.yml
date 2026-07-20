@@ -34,10 +34,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 创建目录
+      - name: 输出目录
         run: |
           pwd
-          mkdir language
 
       - name: 安装依赖
         run: |

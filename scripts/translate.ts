@@ -2,6 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import path from "node:path";
 import { fileTypeMap } from "./filetypeconfig";
 import fs from "node:fs/promises";
+import process from "node:process";
 
 const apiKey = process.env.GEMINI_API_KEY!;
 
@@ -13,9 +14,10 @@ const ai = new GoogleGenAI({
 });
 
 // 读取文件内容
-const languagetext = await fs.readFile("language/Zh-CN.json", "utf8");
+const filepath = path.join(process.cwd(), "language", "Zh-CN.json");
+const languagetext = await fs.readFile(filepath, "utf8");
 // 判断文件类型
-const filetype = path.extname("language/Zh-CN.json");
+const filetype = path.extname(filepath);
 // 根据文件类型获取对应的 prompt 函数
 const promptFunction = fileTypeMap[filetype];
 // 组装 prompt
