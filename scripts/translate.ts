@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileTypeMap } from "./filetypeconfig";
 import fs from "node:fs/promises";
 
-const apiKey = process.env.GEMINI_API_KEY!;
+const apiKey = process.env.GEMINI_API_KEY;
 
 if (!apiKey) {
   throw new Error("GEMINI_API_KEY 没有配置");
