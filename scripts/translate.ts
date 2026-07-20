@@ -41,16 +41,25 @@ const executeApi = async function generate(prompt: string) {
       try {
         return await ai.models.generateContent({
           model: models[modelIndex],
-          // model: "gemini-2.5-flash-lite",
-          // model: "gemini-2.5-flash",
-          // model: "gemini-3-flash-preview",
           contents: prompt,
         });
       } catch (e: any) {
-        if (e.status !== 503) throw e;
-        console.log(`请求模型超时，第 ${i + 1} 次重试...`);
-        console.log("e.message :>> ", e.message);
-        await new Promise((r) => setTimeout(r, 3000));
+        switch (e.status) {
+          case 503:
+            console.log(`请求模型超时，第 ${i + 1} 次重试...`);
+            console.log("e.message :>> ", e.message);
+            await new Promise((r) => setTimeout(r, 3000));
+            break;
+          case 404:
+            console.log(
+              `请求模型 ${models[modelIndex]} 未找到，第 ${i + 1} 次重试...`,
+            );
+            console.log("e.message :>> ", e.message);
+            continue;
+          default:
+            console.log("e.message :>> ", e.message);
+            throw e;
+        }
       }
     }
     modelIndex++;
