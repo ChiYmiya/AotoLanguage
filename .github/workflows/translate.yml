@@ -44,7 +44,7 @@ jobs:
 
       - name: 运行翻译脚本
         run: |
-          npx tsx scripts/translate.js
+          npx tsx scripts/translate.ts
 
       - name: git 配置和提交
         run: |
