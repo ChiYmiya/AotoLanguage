@@ -12,7 +12,7 @@ sequenceDiagram
     Action->>GeminiAPI:携带指定文件
     GeminiAPI->>Action:携带翻译后的Json值
     Action->>GitHub:push翻译后的Json文件
-    GitHub->>用户:返回GitHub Log
+    GitHub->>用户:返回信息
 ```
 
 ## 版本更新

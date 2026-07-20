@@ -1,4 +1,4 @@
-name: APITest
+name: APITest and push
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
   envOutPut:
     runs-on: ubuntu-latest
     steps:
-      - name: 测试是否通过Secret变量输出
+      - name: 测试通过Secrets输出的GEMINI_API_KEY的长度
         run: |
           if [ -z "$GEMINI_API_KEY"];then
               echo "$GEMINI_API_KEY的长度为0"
@@ -21,6 +21,7 @@ jobs:
           fi
         env:
           GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
+
       - name: 安装node.js
         uses: actions/setup-node@v4
         with:
@@ -30,27 +31,28 @@ jobs:
           node -v
           npm -v
 
-    # steps:
-    #   - name: Checkout
-    #     uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    #   - name: 创建目录
-    #     run: |
-    #       pwd
-    #       mkdir testfile
+      - name: 创建目录
+        run: |
+          pwd
+          mkdir language
 
-    #   - name: 创建文件，写
-    #     run: |
-    #       echo "这是一段文本" > testfile/test.txt
-    #       ls testfile
-    #       cat testfile/test.txt
+      - name: 安装依赖
+        run: |
+          npm install
 
-    #   - name: git命令
-    #     run: |
-    #       git config --global user.email "12123@qq.com"
-    #       git config --global user.name "我是Action"
-    #       git status
-    #       git add .
-    #       git status
-    #       git commit -m "这是第一次Action运行"
-    #       git push
+      - name: 运行翻译脚本
+        run: |
+          npx tsx scripts/translate.js
+
+      - name: git 配置和提交
+        run: |
+          git config --global user.email "12123@qq.com"
+          git config --global user.name "我是Action"
+          git status
+          git add .
+          git status
+          git commit -m "测试翻译脚本提交"
+          git push
