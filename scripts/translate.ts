@@ -2,7 +2,6 @@ import { GoogleGenAI } from "@google/genai";
 import path from "node:path";
 import { fileTypeMap } from "./filetypeconfig";
 import fs from "node:fs/promises";
-import process from "node:process";
 
 const apiKey = process.env.GEMINI_API_KEY!;
 
