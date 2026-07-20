@@ -29,26 +29,40 @@ const prompt =
 
 // API调用函数，带重试机制
 const executeApi = async function generate(prompt: string) {
-  for (let i = 0; i < 3; i++) {
-    try {
-      return await ai.models.generateContent({
-        model: "gemini-flash-latest",
-        // model: "gemini-2.5-flash-lite",
-        // model: "gemini-2.5-flash",
-        // model: "gemini-3-flash-preview",
-        contents: prompt,
-      });
-    } catch (e: any) {
-      if (e.status !== 503) throw e;
-
-      console.log(`第 ${i + 1} 次重试...`);
-      console.log("e.message :>> ", e.message);
-      await new Promise((r) => setTimeout(r, 3000));
+  let flag = true;
+  const models = [
+    "gemini-flash-latest",
+    "gemini-2.5-flash-lite",
+    "gemini-2.5-flash",
+    "gemini-3-flash-preview",
+  ];
+  let modelIndex = 0;
+  do {
+    for (let i = 0; i < 3; i++) {
+      try {
+        return await ai.models.generateContent({
+          model: models[modelIndex],
+          // model: "gemini-2.5-flash-lite",
+          // model: "gemini-2.5-flash",
+          // model: "gemini-3-flash-preview",
+          contents: prompt,
+        });
+      } catch (e: any) {
+        if (e.status !== 503) throw e;
+        console.log(`请求模型超时，第 ${i + 1} 次重试...`);
+        console.log("e.message :>> ", e.message);
+        await new Promise((r) => setTimeout(r, 3000));
+      }
     }
-  }
-
+    modelIndex++;
+    if (modelIndex >= models.length) {
+      flag = false;
+    }
+    console.log(`切换到备用模型 ${models[modelIndex]} 进行尝试...`);
+  } while (flag);
   throw new Error("重试 3 次后仍失败");
 };
+
 const response = await executeApi(prompt);
 if (!response.text) {
   throw new Error("Gemini 没有返回文本");
