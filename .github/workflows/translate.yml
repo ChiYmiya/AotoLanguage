@@ -5,8 +5,9 @@ on:
     branches:
       - main
     paths:
-      - "Docs/**"
-      - "language/**"
+      - "Docs/**/*.md"
+      - "language/**/*.json"
+      - "*.md"
 
 permissions:
   contents: write
