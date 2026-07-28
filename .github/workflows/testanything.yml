@@ -1,0 +1,33 @@
+name: testAnything
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/test.yml"
+
+jobs:
+  testAnything:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 安装node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 输出node版本
+        run: |
+          node -v
+          npm -v
+
+      - name: 安装依赖
+        run: |
+          npm install
+
+      - name: 运行测试脚本
+        run: |
+          npx tsx scripts/testanything.ts
