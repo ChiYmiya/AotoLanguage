@@ -12,6 +12,10 @@ on:
 jobs:
   testAnything:
     runs-on: ubuntu-latest
+    env:
+      GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
+      BEFORE: ${{ github.event.before }}
+      AFTER: ${{ github.sha }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
