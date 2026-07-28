@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - ".github/workflows/test.yml"
+      - ".github/workflows/testanything.yml"
 
 jobs:
   testAnything:
