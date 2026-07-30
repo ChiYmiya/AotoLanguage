@@ -7,7 +7,7 @@ on:
     paths:
       - "Docs/**/*.md"
       - "language/**/*.json"
-      - "*.md"
+      - "/*.md"
 
 permissions:
   contents: write
@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
+      BEFORE: ${{ github.event.before }}
+      AFTER: ${{ github.sha }}
     steps:
       - name: 安装node.js
         uses: actions/setup-node@v4
